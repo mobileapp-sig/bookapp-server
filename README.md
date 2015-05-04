@@ -13,8 +13,7 @@ $ . env/bin/activate
 (env) $ pip install uwsgi
 (env) $ pip install mysqlclient 
 ```
-
-...
+* clone repository 
 
 * execute mysql as root
 ```
@@ -26,4 +25,30 @@ mysql> GRANT ALL ON bookapp.* TO 'bookapp_admin'@'localhost';
 * edit password in my.cnf 
 ```
 password = YOURPASSWORD 
+```
+
+* edit paths in uwsig.ini 
+
+* start uwsgi daemon with uwsgi.ini
+
+* edit nginx.conf and start nginx
+```
+upstream django-bookapp {
+    server unix://UWSGI_SOCKET_PATH;
+}
+
+server {
+    ...
+
+    location / {
+        uwsgi_pass  django-bookapp;
+        include     BOOKSERVER_HOME/uwsgi_params;
+    }
+
+    location /static {
+        alias BOOKSERVER_HOME/static;
+    }
+
+    ...
+}
 ```
