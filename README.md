@@ -11,6 +11,7 @@ $ virtualenv env
 $ . env/bin/activate
 (env) $ pip install django
 (env) $ pip install uwsgi
+(env) $ pip install mysqlclient 
 ```
 
 ...
