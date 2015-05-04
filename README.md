@@ -5,15 +5,19 @@ server for bookapp
 
 * with python 2.7 or later
 ```
-$ git clone https://github.com/mobileapp-sig/bookapp-server.git
-$ cd bookapp-server
 $ virtualenv env
 $ . env/bin/activate
 (env) $ pip install django
 (env) $ pip install uwsgi
 (env) $ pip install mysqlclient 
+(env) $ pip install djangorestframework
 ```
+
 * clone repository 
+```
+(env) $ git clone https://github.com/mobileapp-sig/bookapp-server.git
+(env) $ cd bookapp-server
+```
 
 * execute mysql as root
 ```
@@ -25,6 +29,12 @@ mysql> GRANT ALL ON bookapp.* TO 'bookapp_admin'@'localhost';
 * edit password in my.cnf 
 ```
 password = YOURPASSWORD 
+```
+
+* initialize django environment
+```
+(env) $ python manage.py migrate
+(env) $ python manage.py createsuperuser
 ```
 
 * edit paths in uwsig.ini 
