@@ -1,0 +1,8 @@
+{% extends "rest_framework/login_base.html" %}          
+{% load staticfiles %}
+{% block branding %}
+    <h3 style="margin: 0 0 20px;">book.iizs.net</h3>
+{% endblock %}
+{% block other_login %}
+<div style="margin: 20px 0px;"><a href="/login/facebook"><img src="{% static "img/facebook_login.png" %}"/></a></div>
+{% endblock %}
