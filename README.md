@@ -12,6 +12,7 @@ $ . env/bin/activate
 (env) $ pip install mysqlclient 
 (env) $ pip install djangorestframework
 (env) $ pip install django-rest-framework-social-oauth2
+(env) $ pip install django-rest-swagger
 ```
 
 * clone repository 
