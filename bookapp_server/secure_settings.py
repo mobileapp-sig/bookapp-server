@@ -1,0 +1,8 @@
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'SECRET_KEY'
+
+# Facebook configuration
+SOCIAL_AUTH_FACEBOOK_KEY = 'SOCIAL_AUTH_FACEBOOK_KEY'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'SOCIAL_AUTH_FACEBOOK_KEY'
+

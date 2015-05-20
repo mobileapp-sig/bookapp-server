@@ -63,3 +63,6 @@ server {
     ...
 }
 ```
+
+Reference
+https://github.com/PhilipGarnero/django-rest-framework-social-oauth2

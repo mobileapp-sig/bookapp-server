@@ -13,14 +13,13 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from secure_settings import *
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r)mk#wy25_mxuhfe^2!cr6k)opy%qcn!@70ygqamc)6@n5_km-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,6 +72,7 @@ TEMPLATES = [
 ]
 
 TEMPLATE_CONTEXT_PROCESSORS = (
+    # default
     "django.contrib.auth.context_processors.auth",
     "django.template.context_processors.debug",
     "django.template.context_processors.i18n",
@@ -80,20 +80,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.template.context_processors.static",
     "django.template.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
+    # OAuth
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
 )
 
-AUTHENTICATION_BACKENDS = (
-    'rest_framework_social_oauth2.backends.DjangoOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
 WSGI_APPLICATION = 'bookapp_server.wsgi.application'
-
-PROPRIETARY_APPLICATION_NAME = 'mobileappsig.bookapp.server'
-
-
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -117,6 +109,27 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
+# Authentication
+
+AUTHENTICATION_BACKENDS = (
+    # Facebook OAuth2
+    'social.backends.facebook.Facebook2AppOAuth2',
+    'social.backends.facebook.Facebook2OAuth2',
+
+    # django-rest-framework-social-oauth2
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+
+    # Django
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_REDIRECT_URL = '/'
+
+# Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from facebook. 
+# Email is not sent by default, to get it, you must request the email permission:
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+PROPRIETARY_APPLICATION_NAME = 'mobileappsig.bookapp.server'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
