@@ -7,10 +7,7 @@ class Book(models.Model):
     author = models.CharField(max_length=200, blank=True)
     publisher = models.CharField(max_length=200, blank=True)
     description = models.CharField(max_length=1000, blank=True)
-    pubdate = models.DateField(blank=True)
-
-    def isbn(self, value):
-        self._isbn = value
+    pubdate = models.DateField(null=True, blank=True)
 
 class BookRating(models.Model):
     user = models.ForeignKey(User)
