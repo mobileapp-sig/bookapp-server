@@ -9,8 +9,3 @@ class Book(models.Model):
     description = models.CharField(max_length=1000, blank=True)
     pubdate = models.DateField(null=True, blank=True)
 
-class BookRating(models.Model):
-    user = models.ForeignKey(User)
-    book = models.ForeignKey(Book)
-    _rating = models.SmallIntegerField()
-    

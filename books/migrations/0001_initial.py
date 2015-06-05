@@ -24,13 +24,4 @@ class Migration(migrations.Migration):
                 ('pubdate', models.DateField(blank=True)),
             ],
         ),
-        migrations.CreateModel(
-            name='BookRating',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('_rating', models.SmallIntegerField()),
-                ('book', models.ForeignKey(to='books.Book')),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
     ]
