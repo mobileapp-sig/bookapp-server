@@ -39,7 +39,7 @@ class Checkpoint(models.Model):
     mybook = models.ForeignKey(MyBook)
     timestamp = models.DateTimeField(auto_now_add=True)
     cptype = models.CharField(max_length=1, choices=CHECKPOINT_TYPES)
-    page = models.SmallIntegerField()
+    page = models.SmallIntegerField(null=True, blank=True)
     memo = models.TextField(null=True, blank=True)
 
 class WishList(models.Model):
