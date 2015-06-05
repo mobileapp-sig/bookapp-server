@@ -7,7 +7,7 @@ class MyBook(models.Model):
     user = models.ForeignKey(User)
     book = models.ForeignKey(Book)
 
-    rating = models.SmallIntegerField()
+    rating = models.SmallIntegerField(default=0)
 
 class Checkpoint(models.Model):
     PURCHASE = 'P'
